@@ -1,25 +1,27 @@
 from lilletest import *
 
 run_cases = [
-    (100, 5, 2, 20, 65),
-    (200, 10, 1, 25, 185),
+    (5, 6, False),
+    (5, 5, False),
+    (7, 6, True),
 ]
 
 submit_cases = run_cases + [
-    (0, 0, 0, 0, 0),
-    (1, 1, 1, 1, 1),
-    (100, 2, 3, 1, 99),
-    (2500, 3, 2, 2, 2499),
+    (10, 3, True),
+    (2, 2, False),
+    (0, 0, False),
+    (10, 5, True),
+    (5, 10, False),
 ]
 
 
-def test(input1, input2, input3, input4, expected_output):
+def test(player_1_score, player_2_score, expected):
     print("---------------------------------")
-    print(f"Inputs: {input1}, {input2}, {input3}, {input4}")
-    result = take_magic_damage(input1, input2, input3, input4)
-    print(f"Expected: {expected_output}")
+    print(f"Inputs: {player_1_score}, {player_2_score}")
+    result = player_1_wins(player_1_score, player_2_score)
+    print(f"Expected: {expected}")
     print(f"Actual:   {result}")
-    if result == expected_output:
+    if result == expected:
         print("Pass")
         return True
     print("Fail")

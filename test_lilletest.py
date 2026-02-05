@@ -1,27 +1,23 @@
 from lilletest import *
 
 run_cases = [
-    (5, 6, False),
-    (5, 5, False),
-    (7, 6, True),
+    (500, 1000, "incorrect amount"),
+    (800, 800, "correct amount"),
 ]
 
 submit_cases = run_cases + [
-    (10, 3, True),
-    (2, 2, False),
-    (0, 0, False),
-    (10, 5, True),
-    (5, 10, False),
+    (1500, 1000, "incorrect amount"),
+    (200, 200, "correct amount"),
 ]
 
 
-def test(player_1_score, player_2_score, expected):
+def test(input1, input2, expected_output):
     print("---------------------------------")
-    print(f"Inputs: {player_1_score}, {player_2_score}")
-    result = player_1_wins(player_1_score, player_2_score)
-    print(f"Expected: {expected}")
+    print(f"Inputs: {input1}, {input2}")
+    result = check_swords_for_army(input1, input2)
+    print(f"Expected: {expected_output}")
     print(f"Actual:   {result}")
-    if result == expected:
+    if result == expected_output:
         print("Pass")
         return True
     print("Fail")
@@ -42,6 +38,7 @@ def main():
         print("============= PASS ==============")
     else:
         print("============= FAIL ==============")
+
     if skipped > 0:
         print(f"{passed} passed, {failed} failed, {skipped} skipped")
     else:
